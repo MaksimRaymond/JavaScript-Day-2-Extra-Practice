@@ -1,11 +1,13 @@
 // Use Array Methods to solve the tasks below 🎉
 
-const toppings = ['Mushrooms ', 'Tomatoes', 'Eggs', 'Chili', 'Lettuce', 'Avocado', 'Chiles', 'Bacon', 'Pickles', 'Onions', 'Cheese'];
+const toppings = ['Mushrooms', 'Tomatoes', 'Eggs', 'Chili', 'Lettuce', 'Avocado', 'Chiles', 'Bacon', 'Pickles', 'Onions', 'Cheese'];
 
 /*
 TASK 1 🚀
 // The customer would like to see the topping options, console log out each of the toppings one by one in the array above 
 */
+
+
 
 
 /*
@@ -14,7 +16,14 @@ TASK 2 🚀
 for example you no longer have any onions and need to remove it from the list of toppings
 Use .forEach() - hint - you will need to include the index in the callback
  */
+function toppingRemover(arr, item){
+    const removed = arr.filter(food => {
+        return food != item
+    })
+    return removed;
+}
 
+console.log(toppingRemover(toppings, 'Onions'))
 
 
 /*
@@ -22,7 +31,8 @@ TASK 3 🚀
 // Sort the topping alphabetically and return them in a new array 
 */
 
-
+toppings.sort()
+console.log(toppings.sort());
 
 
 const vacations = [
@@ -42,6 +52,17 @@ const vacations = [
 TASK 4 🚀
 // The travel agent would like to send a couple on their honeymoon to a location with a beach and a temperature above 90 degrees. return their options in a new array 
 */
+// vacations.map((item) => {
+//     if(item.temperature > 90 && item.beach == true){
+//         return item
+//     }
+// });
+
+const honeymoon = vacations.filter(function(item){
+    return item.temperature > 90 && item.beach == true;
+});
+
+console.log(honeymoon)
 
 
 
@@ -49,7 +70,11 @@ TASK 4 🚀
 TASK 5 🚀
 // A developer decides to become a digital nomad for a year, they would like to live in a place with strong wifi, a beach, and good hiking, return their options
 */
+const nomad = vacations.filter(function(item){
+    return item.wifi == 'strong' && item.beach == true && item.hiking == true;
+});
 
+console.log(nomad)
 
 
 /* 
@@ -64,11 +89,30 @@ TASK 7 🚀
 // write a function that finds the average of overall ratings in a given array. The function should take an array as its argument and should return the average of the overall ratings in that array 
 hint - use .reduce()
 */
+const rating = vacations.reduce((acc, item) => {
+    return acc + item.overall_rating;
+}, 0)
+
+console.log(rating/vacations.length)
 
 
-/*
-TASK 8 🚀
-Find the airport codes for each of the cities in the vacation array and write a function to add them to the objects in the array
-hint - your function should include array, index and code as parameters
-you will need to invoke the function each time you wish to add a new code
-*/
+
+// TASK 8 🚀
+// Find the airport codes for each of the cities in the vacation array and write a function to add them to the objects in the array
+// hint - your function should include array, index and code as parameters
+// you will need to invoke the function each time you wish to add a new code 
+function codeFinder (arr, index, code){
+    return {
+        city: arr[index].city,
+        country: arr[index].country,
+        region: arr[index].region,
+        temperature: arr[index].temperature,
+        beach: arr[index].beach,
+        sea: arr[index].sea,
+        wifi: arr[index].wifi,
+        hiking: arr[index].hiking,
+        overall_rating: arr[index].overall_rating,
+        airportcode: code}
+
+    }
+console.log(codeFinder(vacations, 0, 'YYZ'))
