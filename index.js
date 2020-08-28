@@ -6,7 +6,10 @@ const toppings = ['Mushrooms', 'Tomatoes', 'Eggs', 'Chili', 'Lettuce', 'Avocado'
 TASK 1 🚀
 // The customer would like to see the topping options, console log out each of the toppings one by one in the array above 
 */
+function topping(item, index){
+    toppings.forEach(topping => console.log(topping)};
 
+console.log(toppings);
 
 
 
@@ -81,7 +84,30 @@ console.log(nomad)
 TASK 6 🚀
 // write a function that allows a user to sort their vacations by hiking opportunities, beach access or a mix of both and return their options
 */
+const hikes = vacations.filter(function(item){
+    return item.hiking== true;
+});
+console.log(hikes)
 
+const beaches= vacations.filter(function(item){
+    return item.beach == true;
+});
+console.log(beaches);
+const options = vacations.filter(function(item){
+    return item.hiking == true && item.beach == true;
+});
+function opportunities (goal){
+    if (goal == 'hiking'){
+        return hikes;
+    }else if (goal == 'beach'){
+        return beaches;
+    }else if (goal == 'both'){
+        return options;
+    }
+}
+// opportunities('hiking');
+console.log(opportunities('both'));
+// opportunities('beaches')
 
 
 /* 
